@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
             Log.i(TAG,"button was clicked")
             var name = binding.etName.text.toString()
             binding.tvMain.setText(name)
-            throw NullPointerException("debug app demo")
+           var result = addNnos(10,20)
+           // throw NullPointerException("debug app demo")
         }
 
         binding.btnincrease.setOnClickListener {
@@ -56,6 +57,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAlarm.setOnClickListener { createAlarm("b10",11,35) }
 
+    }
+
+    private fun addNnos(i: Int, i1: Int): Int {
+       var c = 20+30
+        repeat(5){
+            c++
+            c += 10
+        }
+
+        return  i + i1
     }
 
     fun handleClick(view: View) {
