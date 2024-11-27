@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello Android scb!"
@@ -18,11 +19,23 @@
 
     <Button
         android:id="@+id/btnInc"
-        android:onClick="handleClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="32dp"
+        android:onClick="handleClick"
         android:text="increment"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="407dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="3dp"
+        android:text="log"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnInc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
