@@ -1,5 +1,7 @@
 package com.example.scb10
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -36,6 +38,12 @@ var count = 0
         binding.btnincrease.setOnClickListener {
             count++
             binding.tvMain.setText(""+count)
+        }
+
+        binding.btnDial.setOnClickListener {
+            var myIntention :Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:9880979732"))
+            startActivity(myIntention)
+
         }
 
     }
