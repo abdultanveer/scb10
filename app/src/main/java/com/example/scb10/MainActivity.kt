@@ -20,10 +20,11 @@ class MainActivity : AppCompatActivity() {
    // lateinit var logButton:Button
    private lateinit var binding: ActivityMainBinding
     var count = 0
-    var TAG = "MainActivity"
+    var TAG = MainActivity::class.java.simpleName
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Log.i(TAG, "egg -- oncreate")
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -58,6 +59,34 @@ class MainActivity : AppCompatActivity() {
         binding.btnAlarm.setOnClickListener { createAlarm("b10",11,35) }
 
     }
+
+    override fun onStart() {
+        super.onStart()
+        Log.e(TAG, "hatched -- onstart--get location- data query")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "wakeup -- resume-- restore app state")
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.v(TAG, "sleep -- pause--store to app state")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.w(TAG, "hibernnate -- stop--save the state/resources")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG, "death -- destroyed--release the resources")
+    }
+
 
     private fun addNnos(i: Int, i1: Int): Int {
        var c = 20+30
