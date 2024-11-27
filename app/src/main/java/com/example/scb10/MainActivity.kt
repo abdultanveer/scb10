@@ -47,7 +47,13 @@ var count = 0
 
         }
 
-        binding.btnAlarm.setOnClickListener { createAlarm("b10",11,31) }
+        binding.btnHome.setOnClickListener {
+            var homeIntent = Intent(this,HomeActivity::class.java)
+            homeIntent.putExtra("scb10","android-16 participannts")
+            startActivity(homeIntent)
+        }
+
+        binding.btnAlarm.setOnClickListener { createAlarm("b10",11,35) }
 
     }
 
