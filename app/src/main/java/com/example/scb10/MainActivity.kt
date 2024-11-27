@@ -3,6 +3,7 @@ package com.example.scb10
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -46,6 +47,8 @@ var count = 0
 
         }
 
+        binding.btnAlarm.setOnClickListener { createAlarm("b10",11,31) }
+
     }
 
     fun handleClick(view: View) {
@@ -54,4 +57,16 @@ var count = 0
         snackbar.setAction("undo",{})
         snackbar.show()
     }
+
+    fun createAlarm(message: String, hour: Int, minutes: Int) {
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, message)
+            putExtra(AlarmClock.EXTRA_HOUR, hour)
+            putExtra(AlarmClock.EXTRA_MINUTES, minutes)
+        }
+       // if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        //}
+    }
+
 }
