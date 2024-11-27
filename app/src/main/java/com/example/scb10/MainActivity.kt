@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
    // lateinit var logButton:Button
    private lateinit var binding: ActivityMainBinding
-var count = 0
+    var count = 0
     var TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +34,7 @@ var count = 0
             Log.i(TAG,"button was clicked")
             var name = binding.etName.text.toString()
             binding.tvMain.setText(name)
+            throw NullPointerException("debug app demo")
         }
 
         binding.btnincrease.setOnClickListener {
