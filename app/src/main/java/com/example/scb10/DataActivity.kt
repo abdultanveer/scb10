@@ -26,8 +26,10 @@ class DataActivity : AppCompatActivity() {
         binding = ActivityDataBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        var adapter = CountriesAdapter(countries)
+        var adapter = CountriesAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+
         binding.recyclerView.adapter = adapter
         var  database = ItemRoomDatabase.getDatabase(this)
         dao = database.itemDao()
@@ -35,10 +37,13 @@ class DataActivity : AppCompatActivity() {
         val viewModelFactory = DataViewModel.ItemViewModelFactory(userRepository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(DataViewModel::class.java)
 
-
-        viewModel = ViewModelProvider(this)[DataViewModel::class.java]
-        viewModel._seconds.observe(this, secsObserver);  //registering/subscribe button/bellicon
-        binding.tvCounter.setText(""+viewModel.count)
+        viewModel.allItems.observe(this) { words ->
+            // Update the cached copy of the words in the adapter.
+            words.let { adapter.submitList(it) }
+        }
+        //viewModel = ViewModelProvider(this)[DataViewModel::class.java]
+      //  viewModel._seconds.observe(this, secsObserver);  //registering/subscribe button/bellicon
+       // binding.tvCounter.setText(""+viewModel.count)
         binding.btnCount.setOnClickListener {
             viewModel.incrementCount()
             binding.tvCounter.setText(""+viewModel.count)

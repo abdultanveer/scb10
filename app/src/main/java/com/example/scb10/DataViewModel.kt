@@ -9,8 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.example.scb10.database.Item
 import com.example.scb10.database.ItemRepository
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class DataViewModel(private val repository: ItemRepository) : ViewModel() {
     var TAG = DataViewModel::class.java.simpleName
@@ -21,10 +19,12 @@ class DataViewModel(private val repository: ItemRepository) : ViewModel() {
     private val _item = MutableLiveData<Item?>()
     val item: LiveData<Item?> get() = _item
 
+    val allItems: LiveData<List<Item>> = repository.allItems.asLiveData()
+
     fun incrementCount(){
         count++
     }
-
+//insert into Item (uid,name,itemPrice,quantityInStock) values(3,"grocery",33,333)
     fun startTimer(){
         timer = object :CountDownTimer(10_000,1_000){
             override fun onTick(timeRemaining: Long) {
