@@ -12,7 +12,9 @@ import com.example.scb10.database.ItemDao
 import com.example.scb10.database.ItemRoomDatabase
 import com.example.scb10.databinding.ActivityDataBinding
 import com.example.scb10.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class DataActivity : AppCompatActivity() {
@@ -54,6 +56,17 @@ class DataActivity : AppCompatActivity() {
 
         binding.btnInsert.setOnClickListener {
             insertDb()
+        }
+
+        binding.btnget.setOnClickListener {
+            getDb()
+        }
+    }
+
+    private fun getDb() {
+        GlobalScope.launch (Dispatchers.Main){
+            var item = dao.getItem(11).first()
+            binding.tvCounter.setText(item.toString())
         }
     }
 
