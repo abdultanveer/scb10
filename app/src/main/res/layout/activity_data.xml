@@ -35,4 +35,13 @@
         android:text="start timer"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnCount"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="18dp"
+        android:text="insertdb"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnCount"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

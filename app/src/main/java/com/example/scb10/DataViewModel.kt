@@ -4,6 +4,7 @@ import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.scb10.database.Item
 
 class DataViewModel : ViewModel() {
     var TAG = DataViewModel::class.java.simpleName
@@ -30,4 +31,6 @@ class DataViewModel : ViewModel() {
         }.start()
 
         }
+
+   fun insertDb(item:Item){}
 }
