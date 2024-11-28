@@ -11,34 +11,30 @@
         android:id="@+id/tvMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="67dp"
         android:text="Hello Android scb!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.219"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167" />
+        app:layout_constraintStart_toEndOf="@+id/etName"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnInc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="21dp"
         android:onClick="handleClick"
         android:text="increment"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMain" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnAlarm"
+        app:layout_constraintEnd_toStartOf="@+id/tvMain" />
 
     <Button
         android:id="@+id/btnLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="30dp"
         android:text="log"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnInc" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnInc"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etName"
@@ -56,40 +52,38 @@
         android:id="@+id/btnincrease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="316dp"
         android:text="@string/increase"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnHome"
+        app:layout_constraintEnd_toEndOf="@+id/btnAlarm" />
 
     <Button
         android:id="@+id/btnDial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="30dp"
         android:text="dial"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnHome"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="13dp"
         android:text="@string/alarm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDial" />
+        app:layout_constraintEnd_toEndOf="@+id/tvMain"
+        app:layout_constraintTop_toBottomOf="@+id/tvMain" />
 
     <Button
         android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginTop="34dp"
         android:text="home"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAlarm" />
+        app:layout_constraintStart_toStartOf="@+id/btnInc"
+        app:layout_constraintTop_toBottomOf="@+id/btnInc" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
