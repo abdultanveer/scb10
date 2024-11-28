@@ -54,4 +54,51 @@
         android:text="get db"
         app:layout_constraintStart_toStartOf="@+id/btnTimer"
         app:layout_constraintTop_toBottomOf="@+id/btnTimer" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="29dp"
+        android:ems="10"
+        android:hint="name"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnget" />
+
+    <EditText
+        android:id="@+id/etprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:ems="10"
+        android:hint="price"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/etName"
+        app:layout_constraintStart_toEndOf="@+id/etName" />
+
+    <EditText
+        android:id="@+id/etquantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="quantity"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
+
+    <EditText
+        android:id="@+id/etId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="17dp"
+        android:ems="10"
+        android:hint="id"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/etprice"
+        app:layout_constraintStart_toEndOf="@+id/btnget" />
 </androidx.constraintlayout.widget.ConstraintLayout>

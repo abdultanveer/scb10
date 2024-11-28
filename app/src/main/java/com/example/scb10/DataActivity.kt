@@ -1,20 +1,16 @@
 package com.example.scb10
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.scb10.database.Item
 import com.example.scb10.database.ItemDao
+import com.example.scb10.database.ItemRepository
 import com.example.scb10.database.ItemRoomDatabase
 import com.example.scb10.databinding.ActivityDataBinding
-import com.example.scb10.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class DataActivity : AppCompatActivity() {
@@ -30,6 +26,10 @@ class DataActivity : AppCompatActivity() {
 
         var  database = ItemRoomDatabase.getDatabase(this)
         dao = database.itemDao()
+        val userRepository = ItemRepository(dao)
+        val viewModelFactory = DataViewModel.ItemViewModelFactory(userRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(DataViewModel::class.java)
+
 
         viewModel = ViewModelProvider(this)[DataViewModel::class.java]
         viewModel._seconds.observe(this, secsObserver);  //registering/subscribe button/bellicon
@@ -59,21 +59,37 @@ class DataActivity : AppCompatActivity() {
         }
 
         binding.btnget.setOnClickListener {
-            getDb()
+            GlobalScope.launch {
+                getDb()
+            }
         }
     }
 
-    private fun getDb() {
-        GlobalScope.launch (Dispatchers.Main){
-            var item = dao.getItem(11).first()
-            binding.tvCounter.setText(item.toString())
+
+    private  fun getDb() {
+        var id = binding.etId.text.toString().toInt()
+        GlobalScope.launch(Dispatchers.Main) {
+            viewModel.getItemById(id).observe(this@DataActivity, Observer { item ->
+                // Update UI with user data
+                item?.let {
+                    binding.tvCounter.setText(item.toString())
+                }
+            })
+
         }
+
     }
 
-    private fun insertDb() {
-        var item = Item(11,"fruits",11.11,111)
+    private  fun insertDb() {
+        var item = Item(
+            binding.etId.text.toString().toInt(),
+            binding.etName.text.toString(),
+            binding.etprice.text.toString().toDouble(),
+            binding.etquantity.text.toString().toInt()
+        )
         GlobalScope.launch {
-            dao.insert(item)
+            viewModel.insertItem(item)
+
         }
     }
 }

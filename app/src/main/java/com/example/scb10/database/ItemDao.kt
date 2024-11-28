@@ -13,13 +13,13 @@ interface ItemDao {
 //innsert innto Item where values()
 
     @Insert
-    suspend fun insert(groceryItem: Item)
+     fun insert(groceryItem: Item)
     @Update
     suspend   fun update(item: Item)
     @Delete
     suspend fun delete(item: Item)
     @Query("SELECT * from Item WHERE uid = :id")
-    fun getItem(id: Int): Flow<Item>
+    fun getItem(id: Int): Flow<Item>//4
     @Query("SELECT * from Item ORDER BY name ASC")
     fun getItems(): Flow<List<Item>>
 }
