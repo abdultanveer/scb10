@@ -25,4 +25,12 @@ class DataActivity : AppCompatActivity() {
             binding.tvCounter.setText(""+viewModel.count)
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        binding.btnTimer.setOnClickListener {
+            viewModel.startTimer()
+            binding.tvCounter.setText(""+viewModel._seconds)
+        }
+    }
 }
