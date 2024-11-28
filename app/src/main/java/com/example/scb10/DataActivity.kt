@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.scb10.database.Item
 import com.example.scb10.database.ItemDao
 import com.example.scb10.database.ItemRepository
@@ -18,12 +19,16 @@ class DataActivity : AppCompatActivity() {
     lateinit var viewModel: DataViewModel
     lateinit var dao: ItemDao
 
+    var countries = arrayOf("india","usa","uk","russia","china","india","usa","uk","russia","china")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDataBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
+        var adapter = CountriesAdapter(countries)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = adapter
         var  database = ItemRoomDatabase.getDatabase(this)
         dao = database.itemDao()
         val userRepository = ItemRepository(dao)
