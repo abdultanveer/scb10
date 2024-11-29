@@ -24,7 +24,7 @@ class InternetActivity : AppCompatActivity() {
 
     private fun getMarsPhotos() {
        GlobalScope.launch(Dispatchers.Main) {
-           val listResult = MarsApi.retrofitService.getPhotos()
+           val listResult = MarsApi.retrofitService.getPhotos().get(0).id
            binding.tvJSon.setText(listResult.toString())
 
        }
