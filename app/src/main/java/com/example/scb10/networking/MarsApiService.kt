@@ -1,4 +1,5 @@
 package com.example.scb10.networking
+import androidx.lifecycle.LiveData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -22,7 +23,7 @@ private val retrofit = Retrofit.Builder()
 interface MarsApiService {
 
     @GET("photos")
-    suspend fun getPhotos(): List<MarsPhoto>
+    suspend fun getPhotos(): LiveData<List<MarsPhoto>>
 
 }
 
