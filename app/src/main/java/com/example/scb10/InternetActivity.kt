@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import coil.load
 import com.example.scb10.databinding.ActivityInternetBinding
 import com.example.scb10.databinding.ActivityMainBinding
 import com.example.scb10.networking.MarsApi
@@ -24,8 +25,9 @@ class InternetActivity : AppCompatActivity() {
 
     private fun getMarsPhotos() {
        GlobalScope.launch(Dispatchers.Main) {
-           val listResult = MarsApi.retrofitService.getPhotos().get(0).id
-           binding.tvJSon.setText(listResult.toString())
+           val url = MarsApi.retrofitService.getPhotos().get(0).imgSrc
+          // binding.tvJSon.setText(listResult.toString())
+           binding.imageView2.load(url)
 
        }
     }
