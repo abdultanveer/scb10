@@ -87,7 +87,8 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "death -- destroyed--release the resources")
     }
 
-
+//http:abdul.com/i=10,i1=20
+    //{ result: 20}
     private fun addNnos(i: Int, i1: Int): Int {
        var c = 20+30
         repeat(5){

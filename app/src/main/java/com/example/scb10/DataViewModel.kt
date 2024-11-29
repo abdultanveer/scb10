@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.scb10.database.Item
 import com.example.scb10.database.ItemRepository
 
@@ -26,6 +27,7 @@ class DataViewModel(private val repository: ItemRepository) : ViewModel() {
     }
 //insert into Item (uid,name,itemPrice,quantityInStock) values(3,"grocery",33,333)
     fun startTimer(){
+
         timer = object :CountDownTimer(10_000,1_000){
             override fun onTick(timeRemaining: Long) {
                 _seconds.value = timeRemaining.toInt()

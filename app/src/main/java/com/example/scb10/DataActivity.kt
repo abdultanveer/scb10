@@ -75,8 +75,9 @@ class DataActivity : AppCompatActivity() {
         }
     }
 
-
+//launch = coroutine
     private  fun getDb() {
+
         var id = binding.etId.text.toString().toInt()
         GlobalScope.launch(Dispatchers.Main) {
             viewModel.getItemById(id).observe(this@DataActivity, Observer { item ->
